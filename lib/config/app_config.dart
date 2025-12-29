@@ -1,3 +1,6 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_get_starter/config/dot_env_config.dart';
+
 import '../core/constants/app_constants.dart';
 
 class AppConfig {
@@ -5,16 +8,14 @@ class AppConfig {
   static const String packageName = 'com.yourcompany.yourapp';
 
   // Environment
-  static const bool isLive = false;
+  static bool isLive = DotEnvConfig.isLive;
 
   // API Configuration
   static String get apiBaseUrl {
-    switch (isLive) {
-      case true:
-        return AppConstants.apiBaseUrl;
-      case false:
-        return 'http://staging-api.yourapp.com/api';
+    if (isLive) {
+      return dotenv.env['API_URL'] ?? AppConstants.apiBaseUrl;
     }
+    return 'http://staging-api.yourapp.com/api';
   }
 
   // Feature Flags

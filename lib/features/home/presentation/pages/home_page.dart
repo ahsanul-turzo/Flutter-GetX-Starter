@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_get_starter/config/dot_env_config.dart';
+import 'package:flutter_get_starter/core/utils/logger.dart';
 import 'package:get/get.dart';
 
 import '../../../../controllers/auth_controller.dart';
@@ -11,7 +13,7 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final authController = Get.find<AuthController>();
-
+    Logger.debug("", {"DotEnvHelper.isLive": DotEnvConfig.isLive});
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),

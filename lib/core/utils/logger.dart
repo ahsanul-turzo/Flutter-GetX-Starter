@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 enum LogLevel { debug, info, warning, error }
 
-class Logger {
+abstract class Logger {
   static const String _prefix = '🔥 APP';
 
   static void debug(String message, [dynamic data]) {

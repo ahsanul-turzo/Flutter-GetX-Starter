@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -14,6 +15,7 @@ import 'services/storage_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
 
   // Initialize GetStorage
   await GetStorage.init(AppConstants.storageBoxName);
@@ -27,7 +29,6 @@ void main() async {
   Logger.info('App initialized successfully');
   Logger.info('Environment isLive: ${AppConfig.isLive}');
   Logger.info('API Base URL: ${AppConfig.apiBaseUrl}');
-
   runApp(const MyApp());
 }
 

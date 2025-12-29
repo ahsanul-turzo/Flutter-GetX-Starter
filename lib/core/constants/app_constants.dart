@@ -1,4 +1,4 @@
-class AppConstants {
+abstract class AppConstants {
   // API Configuration
   static const String apiBaseUrl = 'https://your-api.com/api';
   static const String rootUrl = 'https://your-api.com';
