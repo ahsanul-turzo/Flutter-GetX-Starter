@@ -25,7 +25,7 @@ void main() async {
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   Logger.info('App initialized successfully');
-  Logger.info('Environment: ${AppConfig.environment}');
+  Logger.info('Environment isLive: ${AppConfig.isLive}');
   Logger.info('API Base URL: ${AppConfig.apiBaseUrl}');
 
   runApp(const MyApp());

@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 import '../../../../controllers/auth_controller.dart';
-import '../../data/datasources/auth_remote_datasource.dart';
 import '../../data/repositories/auth_repository_impl.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../../domain/usecases/login_usecase.dart';
@@ -9,9 +8,6 @@ import '../../domain/usecases/login_usecase.dart';
 class AuthBinding extends Bindings {
   @override
   void dependencies() {
-    // DataSource
-    Get.lazyPut<AuthRemoteDataSource>(() => AuthRemoteDataSourceImpl(Get.find()));
-
     // Repository
     Get.lazyPut<AuthRepository>(() => AuthRepositoryImpl(remoteDataSource: Get.find()));
 
@@ -21,7 +17,7 @@ class AuthBinding extends Bindings {
     // Controller
     Get.put(
       AuthController(loginUseCase: Get.find(), authRepository: Get.find(), storageService: Get.find()),
-      permanent: true, // Keep it alive throughout the app
+      permanent: true,
     );
   }
 }

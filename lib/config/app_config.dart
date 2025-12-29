@@ -5,21 +5,15 @@ class AppConfig {
   static const String packageName = 'com.yourcompany.yourapp';
 
   // Environment
-  static const String environment = String.fromEnvironment('ENVIRONMENT', defaultValue: 'development');
-
-  static bool get isDevelopment => environment == 'development';
-  static bool get isProduction => environment == 'production';
-  static bool get isStaging => environment == 'staging';
+  static const bool isLive = false;
 
   // API Configuration
   static String get apiBaseUrl {
-    switch (environment) {
-      case 'production':
-        return 'https://api.yourapp.com/api';
-      case 'staging':
-        return 'https://staging-api.yourapp.com/api';
-      default:
+    switch (isLive) {
+      case true:
         return AppConstants.apiBaseUrl;
+      case false:
+        return 'http://staging-api.yourapp.com/api';
     }
   }
 
